@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO POST | Andrey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0d12;
+            --card-bg: rgba(25, 25, 35, 0.7);
+            --text-main: #e2e2e2;
+            --text-muted: #9ba1a6;
+            --accent: #a385e0;
+            --accent-glow: rgba(163, 133, 224, 0.4);
+            --danger: #e06c75;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, #1f1c2c, #0d0d12);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 750px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 1.8em;
+            letter-spacing: 5px;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+
+        .divider {
+            text-align: center;
+            color: var(--accent);
+            letter-spacing: 3px;
+            margin-bottom: 30px;
+            opacity: 0.6;
+        }
+
+        /* Центрированный инфо-блок */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-header h2 {
+            font-size: 2.5em;
+            margin: 0;
+            color: var(--accent);
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .pronouns {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            margin: 10px 0 20px 0;
+            font-style: italic;
+        }
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Space Mono', monospace;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+        }
+
+        .info-item span { color: var(--accent); }
+
+        h3 {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            margin-top: 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.1em;
+        }
+
+        /* Фандомы по датам */
+        .fandoms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .fandom-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.85em;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .fandom-year { color: var(--accent); font-weight: bold; }
+
+        /* Киннлист с рамками */
+        .kinn-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .kinn-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .kinn-frame {
+            width: 110px;
+            height: 110px;
+            border-radius: 15px;
+            padding: 3px;
+            background: linear-gradient(45deg, var(--accent), transparent);
+            border: 1px solid var(--border);
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .kinn-frame:hover { transform: scale(1.05); }
+
+        .kinn-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .kinn-name {
+            font-size: 0.75em;
+            font-family: 'Space Mono', monospace;
+            color: var(--text-main);
+        }
+
+        /* DNI */
+        .dni-container {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(224, 108, 117, 0.05);
+            border: 1px solid rgba(224, 108, 117, 0.2);
+            border-radius: 15px;
+        }
+
+        .dni-container strong { color: var(--danger); }
+
+        /* IDV Поиск */
+        .idv-box {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(163, 133, 224, 0.05);
+            border: 1px solid var(--accent-glow);
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .idv-header {
+            color: var(--accent);
+            font-weight: 800;
+            display: block;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .anon-btn {
+            display: block;
+            text-align: center;
+            background: var(--accent);
+            color: var(--bg-color);
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 30px;
+            font-weight: 800;
+            font-family: 'Space Mono', monospace;
+            transition: 0.3s;
+        }
+
+        .anon-btn:hover {
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>⟡ INFO POST ⟡</h1>
+    <div class="divider">⟀⟀⟀⟀⟀⟀⟀⟀⟀⟀⟀⟀</div>
+
+    <div class="profile-header">
+        <h2>Андрей</h2>
+        <p class="pronouns">She / He</p>
+        
+        <div class="main-info">
+            <div class="info-item"><span>✦ Bday:</span> 03.06</div>
+            <div class="info-item"><span>✦ Type:</span> choleric-melancholic ENFJ so2W3sx</div>
+        </div>
+        <p style="font-size: 0.75em; color: var(--text-muted); margin-top: 15px;">
+            (я девушка, но из-за ника людям проще обращаться ко мне на он, так что мне без разницы)
+        </p>
+    </div>
+
+    <h3>⟡ Fandoms</h3>
+    <div class="fandoms-grid">
+        <div class="fandom-item">Brawl Stars <span class="fandom-year">2019</span></div>
+        <div class="fandom-item">Danganronpa <span class="fandom-year">2020</span></div>
+        <div class="fandom-item">Genshin Impact <span class="fandom-year">2021</span></div>
+        <div class="fandom-item">Cookie Run Kingdom <span class="fandom-year">2021</span></div>
+        <div class="fandom-item">Identity V <span class="fandom-year">2023</span></div>
+        <div class="fandom-item">Project SEKAI <span class="fandom-year">2023</span></div>
+        <div class="fandom-item">Hello Charlotte <span class="fandom-year">2023</span></div>
+        <div class="fandom-item">OMORI <span class="fandom-year">2023</span></div>
+        <div class="fandom-item">Persona 5 Royal <span class="fandom-year">2024</span></div>
+        <div class="fandom-item">Witch Heart <span class="fandom-year">2024</span></div>
+        <div class="fandom-item">Steven Universe <span class="fandom-year">2025</span></div>
+    </div>
+
+    <h3>⟡ Kinnlist</h3>
+    <div class="kinn-section">
+        <div class="kinn-card">
+            <div class="kinn-frame"><img src="pictures/pink_diamond.png"></div>
+            <div class="kinn-name">Pink Diamond</div>
+        </div>
+        <div class="kinn-card">
+            <div class="kinn-frame"><img src="pictures/dima.png"></div>
+            <div class="kinn-name">Dmitry Pobratsky</div>
+        </div>
+        <div class="kinn-card">
+            <div class="kinn-frame"><img src="pictures/anri.png"></div>
+            <div class="kinn-name">Anri</div>
+        </div>
+        <div class="kinn-card">
+            <div class="kinn-frame"><img src="pictures/mizuki.png"></div>
+            <div class="kinn-name">Mizuki</div>
+        </div>
+        <div class="kinn-card">
+            <div class="kinn-frame"><img src="pictures/florence.png"></div>
+            <div class="kinn-name">Florence</div>
+        </div>
+    </div>
+
+    <div class="dni-container">
+        <strong>✦ DNI:</strong> зоофилы, педофилы, живодеры, некрофилы, наркозависимые, т-персоны, расисты, гомофобы, доксеры, религиозные фанатики, буллеры, мизогинисты, мизандристы.
+    </div>
+
+    <div class="idv-box">
+        <span class="idv-header">✦ Identity V Search</span>
+        <p>Ищу дуо/трио/тиму для вечерних рангов (мамонты-грифоны). Собираюсь апать 1-3 грифона или даже алика. Играю на мехе, чирке и барме. WR ~35%. Можем тусить в квиках или кастомках. Найдитесь, одной очень грустно играть!</p>
+    </div>
+
+    <a href="http://t.me/andrey5_3anon_bot" target="_blank" class="anon-btn">АНКЕТА В АНОНКУ ➔</a>
+</div>
+
+</body>
+</html>
